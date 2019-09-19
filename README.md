@@ -1,0 +1,1 @@
+# coin-auto-trade-for-SOSCON-2019
