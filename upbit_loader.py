@@ -33,7 +33,7 @@ class UpbitLoader():
                               f'{market}_m{minute}_l', f'{market}_m{minute}_c',
                               f'{market}_m{minute}_v', f'{market}_m{minute}_t']
                 result = pd.concat([result, df], axis=1)
-                time.sleep(0.3)
+                time.sleep(0.4)
         return result
 
     def _json_to_df(self, candle):
@@ -65,10 +65,12 @@ class UpbitLoader():
 def main():
     if not os.path.exists("./data"):
         os.makedirs("./data")
-
+    cnt = 0
     while True:
+        print(f"{cnt}번째 크롤링")
         st = time.time()
         UpbitLoader()
+        cnt += 1
         print(f"| run time: {int(time.time() - st)}")
         time.sleep(11000)
 
