@@ -104,9 +104,9 @@ class UpbitMinuteCandleCrawler():
   def _json_to_df(self, candle):
     try:
       return [candle['opening_price'], candle['high_price'],
-          candle['low_price'], candle['trade_price'],
-          candle['candle_acc_trade_volume'], candle['candle_acc_trade_price'],
-          candle['timestamp']]
+							candle['low_price'], candle['trade_price'],
+							candle['candle_acc_trade_volume'], candle['candle_acc_trade_price'],
+							candle['timestamp']]
     except Exception as e:
       print(f"**** ERROR {e} ****")
       print(candle)
@@ -122,19 +122,9 @@ class UpbitMinuteCandleCrawler():
       return selected_markets
 
 def main():
-  if not os.path.exists("./data"): #2018-01-01 00:00:00
-    os.makedirs("./data")  
-  # print(str(now).split('.')[0])
+  if not os.path.exists("./data"):
+    os.makedirs("./data") 
   UpbitMinuteCandleCrawler()
-  
-  # cnt = 0
-  # while True:
-  #   print(f"{cnt}번째 크롤링")
-  #   st = time.time()
-  #   UpbitLoader()
-  #   cnt += 1
-  #   print(f"| run time: {int(time.time() - st)}")
-  #   time.sleep(11000)
 
 if __name__ == "__main__":
   main()
