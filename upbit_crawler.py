@@ -67,7 +67,7 @@ class UpbitTargetMerketCrawler():
 class UpbitMinuteCandleCrawler():
   def __init__(self):
     self.base_url = "https://api.upbit.com/v1/candles/minutes/1"
-    markets = self.get_merkets(["KRW-BTC", "KRW-XRP", "KRW-ETH", "KRW-XLM",
+    markets = self.get_merkets(["KRW-XRP", "KRW-ETH", "KRW-XLM",
                                 "KRW-EOS", "KRW-ADA", "KRW-BCH","KRW-TRX",
                                 "KRW-LTC", "KRW-QTUM", "KRW-STEEM", "KRW-ETC"])
     self.get_minute_candle(markets)
