@@ -67,7 +67,9 @@ class UpbitTargetMerketCrawler():
 class UpbitMinuteCandleCrawler():
   def __init__(self):
     self.base_url = "https://api.upbit.com/v1/candles/minutes/1"
-    markets = self.get_merkets(["KRW-BTC"])
+    markets = self.get_merkets(["KRW-BTC", "KRW-XRP", "KRW-ETH", "KRW-XLM",
+                                "KRW-EOS", "KRW-ADA", "KRW-BCH","KRW-TRX",
+                                "KRW-LTC", "KRW-QTUM", "KRW-STEEM", "KRW-ETC"])
     self.get_minute_candle(markets)
 
   def get_minute_candle(self, markets):
@@ -94,11 +96,11 @@ class UpbitMinuteCandleCrawler():
           # 190분 감소          
           now = now + timedelta(minutes=-190)
           
-          file_name = f"./data/{market}_{to}.pkl"
+          file_name = f"./data/{market}_{to.split(' ')[0]}_{to.split(' ')[1]}.pkl"
           pd.to_pickle(candle, file_name)
-          print(f"save candle.shape {candle.shape} to {file_name}")
+          print(f"save candle.shape {candle.shape} to {file_name} || {datetime.now()}")
 
-          time.sleep(300)
+          time.sleep(5)
 
 
   def _json_to_df(self, candle):
